@@ -1,17 +1,39 @@
 # ISO 3166
-ISO 3166 data (country codes & names) in standard formats (JSON, CSV).
+ISO 3166 country & subdivision codes in standard formats (JSON, CSV).
 
 See https://en.wikipedia.org/wiki/ISO_3166
 
 ## Table of Contents
 1. [Overview](#overview)
+1. [Examples](#examples)
+1. [Sources](#sources)
 
 ### Overview
-This repository consists of three parts. For a detailed description, see https://en.wikipedia.org/wiki/ISO_3166#Parts
+This repository consists of three parts. For a detailed description, see http://www.iso.org/iso/country_codes_glossary.html
 
-1. [ ] ISO 3166-1
-  1. [ ] ISO 3166-1 alpha-2
-  1. [ ] ISO 3166-1 alpha-3
-  1. [ ] ISO 3166-1 numeric
-1. [ ] ISO 3166-2
-1. [ ] ISO 3166-3
+### Country Codes (ISO 3166-1 & ISO 3166-3)
+#### Current
+1. **ISO 3166-1 alpha-2** - a two-letter code that represents a country name, recommended as the general purpose code
+1. **ISO 3166-1 alpha-3** - a three-letter code that represents a country name, which is usually more closely related to the country name
+1. **ISO 3166-1 numeric** - a numeric code that represents a country name, independent of any type of script (Latin, Arabic, etc.)
+1. **ISO 3166-3 (alpha-4)** - a four-letter code that represents a country name that is no longer in use
+
+#### Reserved
+Reserved codes have been reserved for a certain use and do not represent a country name in the standard.
+
+### Subdivision Codes (ISO 3166-2)
+
+1. ***TODO***
+
+
+### Examples
+
+***TODO***
+
+
+### Sources
+
+Data is sourced entirely from the following pages:
+* https://en.wikipedia.org/wiki/ISO_3166-1
+* https://en.wikipedia.org/wiki/ISO_3166-3
+* http://www.iso.org/iso/home/standards/country_codes.htm

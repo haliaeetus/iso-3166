@@ -1,0 +1,21 @@
+{
+  "name": "iso-3166",
+  "version": "0.1.0",
+  "description": "ISO 3166 data in common formats (JSON, CSV).",
+  "main": "index.js",
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haliaeetus/iso-3166.git"
+  },
+  "author": "Ben Martin <ben@benmartinstudios.com> (http://benmartinstudios.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haliaeetus/iso-3166/issues"
+  },
+  "homepage": "https://github.com/haliaeetus/iso-3166#readme"
+}
