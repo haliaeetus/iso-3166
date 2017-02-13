@@ -16,9 +16,11 @@ const unofficial = require('../config/unofficial.json');
 const HEADERS = 'name officialName alpha2 alpha3 numeric wikiEntry'.split(' ');
 
 const FORMATS = (data, headers) => [
-  { ext: '.json', data: _.keyBy(data, 'alpha2'), serializer: stringify },
+  { ext: '.json', data: _.keyBy(data, 'alpha2'), serializer: d => stringify(d, BEAUTIFY_JSON ? { space: 2 } : undefined) },
   { ext: '.csv', data: { data, fields: headers }, serializer: json2csv },
 ];
+
+const BEAUTIFY_JSON = true;
 
 function parseRow(data) {
   /* eslint-disable no-param-reassign */
