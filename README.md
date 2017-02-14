@@ -34,9 +34,9 @@ npm install node-iso-3166
 ```
 
 This module is a work in progress. At present, it exposes two properties:
-* `iso_639_1`: contains the contents of [data/iso_639-1.json](data/iso_639-1.json)
-* `iso_639_2`: contains the contents of [data/iso_639-2.json](data/iso_639-2.json)
-* `iso_639_3`: contains the contents of [data/iso_639-3.json](data/iso_639-3.json)
+* `iso_3166_1`: contains the contents of [data/iso_3166-1.json](data/iso_3166-1.json)
+* `iso_3166_2`: contains the contents of [data/iso_3166-2.json](data/iso_3166-2.json)
+* `iso_3166_3`: contains the contents of [data/iso_3166-3.json](data/iso_3166-3.json)
 ***TODO***
 
 

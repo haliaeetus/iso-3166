@@ -1,6 +1,6 @@
 {
   "name": "node-iso-3166",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "ISO 3166 country & subdivision codes in JSON, CSV, & as a NodeJS module.",
   "main": "index.js",
   "devDependencies": {
