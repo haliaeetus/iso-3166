@@ -14,7 +14,8 @@
     "import/no-extraneous-dependencies": "off",
     "no-console": 0,
     "no-use-before-define": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "no-param-reassign": "off"
   },
   "plugins": [
   ]

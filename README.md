@@ -1,5 +1,5 @@
 # ISO 3166
-ISO 3166 country & subdivision codes in standard formats (JSON, CSV).
+ISO 3166 country & subdivision codes in JSON, CSV, & as a NodeJS module.
 
 See https://en.wikipedia.org/wiki/ISO_3166
 
@@ -16,7 +16,7 @@ This repository consists of three parts. For a detailed description, see http://
 1. **ISO 3166-1 alpha-2** - a two-letter code that represents a country name, recommended as the general purpose code
 1. **ISO 3166-1 alpha-3** - a three-letter code that represents a country name, which is usually more closely related to the country name
 1. **ISO 3166-1 numeric** - a numeric code that represents a country name, independent of any type of script (Latin, Arabic, etc.)
-1. **ISO 3166-3 (alpha-4)** - a four-letter code that represents a country name that is no longer in use
+1. **ISO 3166-3 alpha-4** - a four-letter code that represents a country name that is no longer in use
 
 #### Reserved
 Reserved codes have been reserved for a certain use and do not represent a country name in the standard.
@@ -28,6 +28,15 @@ Reserved codes have been reserved for a certain use and do not represent a count
 
 ### Examples
 
+#### Node Module
+```
+npm install node-iso-3166
+```
+
+This module is a work in progress. At present, it exposes two properties:
+* `iso_639_1`: contains the contents of [data/iso_639-1.json](data/iso_639-1.json)
+* `iso_639_2`: contains the contents of [data/iso_639-2.json](data/iso_639-2.json)
+* `iso_639_3`: contains the contents of [data/iso_639-3.json](data/iso_639-3.json)
 ***TODO***
 
 

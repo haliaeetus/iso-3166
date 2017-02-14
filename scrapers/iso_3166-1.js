@@ -4,75 +4,84 @@ const json2csv = require('json2csv');
 const stringify = require('json-stable-stringify');
 const _ = require('lodash');
 const scrapeUtil = require('scrape-util');
-const url = require('url');
 
-const URL = 'https://en.wikipedia.org/wiki/ISO_3166-1';
 const OUTPUT_DIR = './data';
 const FILE_PREFIX = 'iso_3166-1';
 const INCLUDE_UNOFFICIAL = true;
 
 const unofficial = require('../config/unofficial.json');
 
-const HEADERS = 'name officialName alpha2 alpha3 numeric wikiEntry'.split(' ');
-
-const FORMATS = (data, headers) => [
-  { ext: '.json', data: _.keyBy(data, 'alpha2'), serializer: d => stringify(d, BEAUTIFY_JSON ? { space: 2 } : undefined) },
-  { ext: '.csv', data: { data, fields: headers }, serializer: json2csv },
+const FORMATS = (data) => [
+  { ext: '.json', data, serializer: d => stringify(d, { space: 2 }) },
+  { ext: '.min.json', data, serializer: stringify },
+  { ext: '.csv',
+    data: {
+      data: _.values(data),
+      fields: 'name officialName alpha2 alpha3 numeric wikiUrl'.split(' ')
+    },
+    serializer: json2csv },
 ];
 
-const BEAUTIFY_JSON = true;
+const configs = [
+  {
+    id: 'wiki',
+    url: 'https://en.wikipedia.org/wiki/ISO_3166-1',
+    name: 'ISO 3166-1 Wiki',
+    library: '$',
+    transforms: [
+      'init',
+      'absolutifyUrls'
+    ],
+    parsers: [
+      {
+        id: 'iso_3166_1',
+        name: 'ISO 3166-1',
+        type: 'table',
+        options: {
+          rowParser: function parseRow(data) {
+            const $link = data.link.find('a');
+            delete data.link;
 
-function parseRow(data) {
-  /* eslint-disable no-param-reassign */
-  const $link = data.link.find('a');
-  delete data.link;
-
-  data.name = $link.text();
-  data.officialName = $link.attr('title');
-  data.wikiEntry = url.resolve(URL, $link.attr('href'));
-  return data;
-  /* eslint-enable no-param-reassign */
-}
+            data.name = $link.text();
+            data.officialName = $link.attr('title');
+            data.wikiUrl = $link.attr('href');
+            return data;
+          },
+          selector: $html => {
+            return $html.find('#Officially_assigned_code_elements').nextRelative('table');
+          },
+          parsers: {
+            link: $el => $el
+          },
+          parseIndices: {
+            link: 0,
+            alpha2: 1,
+            alpha3: 2,
+            numeric: 3
+          },
+          key: 'alpha2' // returns object keyed accordingly, else null or undefined for an array
+        }
+      }
+    ]
+  }
+];
 
 // eslint-disable-next-line camelcase
-function processHTML(headers) {
-  const sentinelId = '#Officially_assigned_code_elements';
-  const parseIndices = {
-    link: 0,
-    alpha2: 1,
-    alpha3: 2,
-    numeric: 3
-  };
-
-  const parsers = {
-    link: $elem => $elem
-  };
-
-  return ($html) => {
-    const result = scrapeUtil.parseTableAfterSentinel($html, sentinelId, parseIndices, parsers);
-
-    return {
-      headers,
-      data: result.map(parseRow)
-    };
-  };
-}
-
-// eslint-disable-next-line camelcase
-function generateISO_3166_1(includeUnofficial = INCLUDE_UNOFFICIAL) {
+function generateISO_3166_1() {
   return fs.ensureDirAsync(OUTPUT_DIR)
     .then(scrapeUtil.logger('Ensured output directory exists.'))
-    .then(scrapeUtil.getHTML(URL))
-    .then(scrapeUtil.logger('Retrieved HTML.'))
-    .then(processHTML(HEADERS))
-    .then(files => {
-      if (includeUnofficial) {
-        // eslint-disable-next-line no-param-reassign
-        files.data = files.data.concat(unofficial);
-      }
-      return files;
+    .then(() => scrapeUtil.scrapePages(configs))
+    .then(({ wiki }) => {
+      return wiki.iso_3166_1;
     })
-    .then(scrapeUtil.logger('Processed HTML.'))
+    .then(data => {
+      if (INCLUDE_UNOFFICIAL) {
+        unofficial.forEach((value, key) => {
+          data[key] = value;
+        });
+      }
+      return data;
+    })
     .then(scrapeUtil.renderFiles(FORMATS, FILE_PREFIX, OUTPUT_DIR))
     .then(scrapeUtil.logger('Rendered output files.'))
     .catch(err => console.error(err));

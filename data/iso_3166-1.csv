@@ -1,4 +1,5 @@
-"name","officialName","alpha2","alpha3","numeric","wikiEntry"
+"name","officialName","alpha2","alpha3","numeric","wikiUrl"
+"Kosovo","Republic of Kosovo","XK","XKX","999",
 "Afghanistan","Afghanistan","AF","AFG","004","https://en.wikipedia.org/wiki/Afghanistan"
 "Åland Islands","Åland Islands","AX","ALA","248","https://en.wikipedia.org/wiki/%C3%85land_Islands"
 "Albania","Albania","AL","ALB","008","https://en.wikipedia.org/wiki/Albania"
@@ -248,4 +249,3 @@
 "Yemen","Yemen","YE","YEM","887","https://en.wikipedia.org/wiki/Yemen"
 "Zambia","Zambia","ZM","ZMB","894","https://en.wikipedia.org/wiki/Zambia"
 "Zimbabwe","Zimbabwe","ZW","ZWE","716","https://en.wikipedia.org/wiki/Zimbabwe"
-"Kosovo","Republic of Kosovo","XK","XKX","999","https://en.wikipedia.org/wiki/Kosovo"
