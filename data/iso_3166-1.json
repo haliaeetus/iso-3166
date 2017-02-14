@@ -1,13 +1,4 @@
 {
-  "0": {
-    "alpha2": "XK",
-    "alpha3": "XKX",
-    "name": "Kosovo",
-    "numeric": "999",
-    "officialName": "Republic of Kosovo",
-    "unofficial": true,
-    "wikiEntry": "https://en.wikipedia.org/wiki/Kosovo"
-  },
   "AD": {
     "alpha2": "AD",
     "alpha3": "AND",
@@ -1959,6 +1950,15 @@
     "numeric": "882",
     "officialName": "Samoa",
     "wikiUrl": "https://en.wikipedia.org/wiki/Samoa"
+  },
+  "XK": {
+    "alpha2": "XK",
+    "alpha3": "XKX",
+    "name": "Kosovo",
+    "numeric": "999",
+    "officialName": "Republic of Kosovo",
+    "unofficial": true,
+    "wikiEntry": "https://en.wikipedia.org/wiki/Kosovo"
   },
   "YE": {
     "alpha2": "YE",

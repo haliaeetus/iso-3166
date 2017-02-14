@@ -77,7 +77,7 @@ function generateISO_3166_1() {
     .then(data => {
       if (INCLUDE_UNOFFICIAL) {
         unofficial.forEach((value, key) => {
-          data[key] = value;
+          data[value.alpha2] = value;
         });
       }
       return data;
